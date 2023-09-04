@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"github.com/br4tech/schedule-backoffice/internal/domain/entities"
+	"github.com/br4tech/schedule-backoffice/internal/infra/database"
 	"github.com/jinzhu/gorm"
 )
 
@@ -9,8 +10,8 @@ type UserRepository struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) *UserRepository {
-	return &UserRepository{db}
+func NewUserRepository() *UserRepository {
+	return &UserRepository{db: database.DB}
 }
 
 func(r *UserRepository) Create(user *entities.User) error {

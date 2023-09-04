@@ -2,7 +2,7 @@ package services
 
 import (
 	"github.com/br4tech/schedule-backoffice/internal/domain/entities"
-	repositories "github.com/br4tech/schedule-backoffice/internal/repositories/interfaces"
+	repositories "github.com/br4tech/schedule-backoffice/internal/infra/repositories/interfaces"
 )
 
 

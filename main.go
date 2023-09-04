@@ -1,16 +1,17 @@
 package main
 
 import (
-	"github.com/br4tech/schedule-backoffice/internal/repositories"
-	"github.com/jinzhu/gorm"
+	"github.com/br4tech/schedule-backoffice/internal/infra/database"
+	"github.com/br4tech/schedule-backoffice/internal/infra/repositories"
 )
 
 func main(){
-	db, err := gorm.Open("")
+  _, err := database.InitializeDatabase()
 	if err != nil {
-		panic(err)
+		return
 	}
-	defer db.Close()
 
-	userRepo := repositories.NewUserRepository(db)
+	userRepo := repositories.NewUserRepository()
+
+	defer database.CloseDatabase()
 }
