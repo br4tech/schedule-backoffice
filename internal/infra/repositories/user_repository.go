@@ -3,14 +3,15 @@ package repositories
 import (
 	"github.com/br4tech/schedule-backoffice/internal/domain/entities"
 	"github.com/br4tech/schedule-backoffice/internal/infra/database"
-	"github.com/jinzhu/gorm"
+	repositories "github.com/br4tech/schedule-backoffice/internal/infra/repositories/interfaces"
+	"gorm.io/gorm"
 )
 
 type UserRepository struct {
 	db *gorm.DB
 }
 
-func NewUserRepository() *UserRepository {
+func NewUserRepository() repositories.IUserRepository {
 	return &UserRepository{db: database.DB}
 }
 
