@@ -48,6 +48,7 @@ Siga estas instruções para instalar e configurar a aplicação:
   nano config.yaml
 
   go run main.go
+
   ```
 
 # Uso
@@ -61,8 +62,11 @@ Para usar a aplicação, siga estas instruções.
    ```bash
    go test ./...
 
+  ```
+
 ## Criar mock para a interface
 
 ```bash
   mockgen -source=internal/domain/services/interface/user_interface.go -destination=internaldomain/services/mocks/user_mock.go
+
 ```
