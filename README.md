@@ -36,7 +36,7 @@ Siga estas instruções para instalar e configurar a aplicação:
 
 1. Clone o repositório:
 
-   ```bash
+```bash
   git clone https://github.com/seuusuario/seuprojeto.git
 
   cd seuprojeto
@@ -49,7 +49,7 @@ Siga estas instruções para instalar e configurar a aplicação:
 
   go run main.go
 
-  ```
+```
 
 # Uso
 
@@ -59,10 +59,10 @@ Para usar a aplicação, siga estas instruções.
 
 - Testes unitários:
 
-   ```bash
+ ```bash
    go test ./...
 
-  ```
+```
 
 ## Criar mock para a interface
 
