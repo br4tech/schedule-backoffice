@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/br4tech/schedule-backoffice/internal/application"
-	"github.com/br4tech/schedule-backoffice/internal/domain/services"
+	"github.com/br4tech/schedule-backoffice/internal/domain/service"
 	"github.com/br4tech/schedule-backoffice/internal/infra/database"
-	"github.com/br4tech/schedule-backoffice/internal/infra/repositories"
+	"github.com/br4tech/schedule-backoffice/internal/infra/repository"
 )
 
 func main(){
@@ -13,9 +13,9 @@ func main(){
 		return
 	}
 
-	userRepo := repositories.NewUserRepository()
-	userService := services.NewUserService(userRepo)
-	userApplication := application.NewUserApplication(userService)
+	userRepo := repository.NewUserRepository()
+	userService := service.NewUserService(userRepo)
+	userApplication := application.NewApplication(userService)
 
 	defer database.CloseDatabase()
 }
