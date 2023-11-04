@@ -1,10 +1,15 @@
 package model
 
-import "gorm.io/gorm"
+import (
+	"github.com/br4tech/schedule-backoffice/internal/infra/database/model"
+	"gorm.io/gorm"
+)
 
 type UserProfile struct {
 	gorm.Model
 
-	ProfileID uint `gorm:"column:profile_id"`
-	UserID    uint `gorm:"column:user_id"`
+	ProfileID uint          `gorm:"column:profile_id"`
+	Profile   model.Profile `gorm:"foreignKey:ProfileID"`
+	UserID    uint          `gorm:"column:user_id"`
+	User      model.User    `gorm:"foreignKey:UserID"`
 }

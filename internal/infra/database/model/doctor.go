@@ -11,6 +11,6 @@ type Doctor struct {
 	ReturnDuration int     `gorm:"column:return_duration"`
 	AcceptsReturns bool    `gorm:"column:accept_return"`
 	Notes          string  `gorm:"column:notes"`
+	SupervisorID   uint    `gorm:"column:supervisor_id"`
 	Supervisor     *Doctor `gorm:"foreignKey:SupervisorID"`
-	SupervisorID   uint
 }
