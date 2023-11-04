@@ -5,7 +5,7 @@ import "gorm.io/gorm"
 type Doctor struct {
 	gorm.Model
 
-	Use            User    `gorm:"foreignKey:UserID"`
+	Use            User    `gorm:"polymorphic:User;"`
 	Crm            string  `gorm:"column:crm"`
 	Specialty      string  `gorm:"column:speciality"`
 	ReturnDuration int     `gorm:"column:return_duration"`

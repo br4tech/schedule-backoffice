@@ -4,9 +4,8 @@ import (
 	"gorm.io/gorm"
 )
 
-type Admin struct {
+type UserAdmin struct {
 	gorm.Model
 
-	UserID uint `gorm:"column:user_id"`
-	User   User `gorm:"foreignKey:UserID"`
+	User User `gorm:"polymorphic:User;"`
 }
