@@ -14,6 +14,7 @@ type User struct {
 	Active       bool         `gorm:"column:active"`
 	Overdue      bool         `gorm:"column:overdue"`
 	Role         string       `gorm:"column:role"`
-	Profiles     []Profile    `gorm:"many2many:profile_users;"`
-	Permission   []Permission `gorm:"many2many:role_permissions;"`
+	ProfileID    uint         `gorm:"column:profile_id"`
+	Profiles     Profile      `gorm:"foreignKey:ProfileID"`
+	Permission   []Permission `gorm:"many2many:user_permissions;"`
 }

@@ -22,5 +22,5 @@ type Contract struct {
 	ContracType    ContractType  `gorm:"foreignKey:ContractTypeID"`
 	CompanyID      uint          `gorm:"column:company_id"`
 	Company        Company       `gorm:"foreignKey:CompanyID"`
-	Appointments   []Appointment `gorm:"foreignKey:ContractID"`
+	Appointments   []Appointment `gorm:"foreignKey:AppointmentID"`
 }

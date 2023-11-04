@@ -5,5 +5,6 @@ import "gorm.io/gorm"
 type Profile struct {
 	gorm.Model
 
-	Name string `gorm:"column:name"`
+	ProfileID uint   `gorm:"column:profile_id"`
+	Name      string `gorm:"column:name"`
 }

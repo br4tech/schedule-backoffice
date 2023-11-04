@@ -5,5 +5,6 @@ import "gorm.io/gorm"
 type Permission struct {
 	gorm.Model
 
-	Name string `gorm:"column:name"`
+	PermissionID uint   `gorm:"column:permission_id"`
+	Name         string `gorm:"column:name"`
 }

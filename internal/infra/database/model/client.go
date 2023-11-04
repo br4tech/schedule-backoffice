@@ -5,6 +5,6 @@ import "gorm.io/gorm"
 type Client struct {
 	gorm.Model
 
-	User
-	Contracts []ClientContract
+	User      User       `gorm:"polymorphic:User;"`
+	Contracts []Contract `gorm:"foreignKey:ContractID"`
 }

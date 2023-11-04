@@ -3,7 +3,6 @@ package model
 import (
 	"time"
 
-	"github.com/br4tech/schedule-backoffice/internal/infra/database/model"
 	"gorm.io/gorm"
 )
 
@@ -29,13 +28,14 @@ const (
 type Appointment struct {
 	gorm.Model
 
+	AppointmentID   uint            `gorm:"foreignKey:AppointmentID"`
 	Weekdays        []Weekday       `gorm:"type:varchar(255)[]"`
 	RoomID          uint            `gorm:"column:has_parking"`
-	Room            model.Room      `gorm:"foreignKey:RoomID"`
+	Room            Room            `gorm:"foreignKey:RoomID"`
 	HourlyRate      float64         `gorm:"column:hourly_rate"`
 	Period          string          `gorm:"column:period"`
-	StartAt         time.Time       `gorm:"column:end_at"`
-	EndAt           time.Time       `gorm:"column:start_at"`
+	StartTimeAt     time.Ticker     `gorm:"column:end_at"`
+	EndTimeAt       time.Ticker     `gorm:"column:start_at"`
 	AppointmentType AppointmentType `gorm:"column:appointment_type"`
 	ContractID      uint            `gorm:"column:contract_id"`
 	Contract        Contract        `gorm:"foreignKey:ContractID"`
