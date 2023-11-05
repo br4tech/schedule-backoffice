@@ -7,6 +7,5 @@ import (
 type Departament struct {
 	gorm.Model
 
-	DepartamentID uint   `gorm:"column:departament_id"`
-	Name          string `gorm:"column:name"`
+	Name string `gorm:"column:name"`
 }
