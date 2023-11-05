@@ -1,21 +1,18 @@
 package main
 
 import (
-	"github.com/br4tech/schedule-backoffice/internal/application"
-	"github.com/br4tech/schedule-backoffice/internal/domain/service"
 	"github.com/br4tech/schedule-backoffice/internal/infra/database"
-	"github.com/br4tech/schedule-backoffice/internal/infra/repository"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
-func main(){
-  _, err := database.InitializeDatabase()
+func main() {
+	dsn := ""
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		return
+		panic("Falha ao conectar ao banco de dados")
 	}
 
-	userRepo := repository.NewUserRepository()
-	userService := service.NewUserService(userRepo)
-	userApplication := application.NewApplication(userService)
-
-	defer database.CloseDatabase()
+	adapter := database.NewGormAdapter(db)
+	db = adapter.GetDB()
 }
