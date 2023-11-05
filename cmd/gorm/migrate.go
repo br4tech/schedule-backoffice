@@ -28,5 +28,10 @@ func main() {
 		&model.Secretary{},
 		&model.Client{},
 		&model.ContractType{},
+		&model.Contract{},
+		&model.Unit{},
+		&model.Room{},
+		&model.Appointment{},
+		&model.ParkingPrice{},
 	)
 }
