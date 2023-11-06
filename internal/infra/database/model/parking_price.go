@@ -5,7 +5,7 @@ import "gorm.io/gorm"
 type ParkingPrice struct {
 	gorm.Model
 
-	ParkingPriceID uint    `gorm:"column:parking_price_id"`
-	AppointmentID  uint    `gorm:"column:appointment_id"`
-	Price          float64 `gorm:"column:price"`
+	Price         float64     `gorm:"column:price"`
+	AppointmentID int         `gorm:"column:appointment_id"`
+	Appointment   Appointment `gorm:"foreignKey:AppointmentID"`
 }

@@ -5,7 +5,7 @@ import "gorm.io/gorm"
 type Doctor struct {
 	gorm.Model
 
-	Use            User    `gorm:"polymorphic:User;"`
+	Use            User    `gorm:"polymorphic:Role;"`
 	Crm            string  `gorm:"column:crm"`
 	Specialty      string  `gorm:"column:speciality"`
 	AcceptsReturns bool    `gorm:"column:accept_return"`

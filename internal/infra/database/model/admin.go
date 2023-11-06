@@ -4,8 +4,8 @@ import (
 	"gorm.io/gorm"
 )
 
-type UserAdmin struct {
+type Admin struct {
 	gorm.Model
 
-	User User `gorm:"polymorphic:User;"`
+	User User `gorm:"polymorphic:Role;"`
 }

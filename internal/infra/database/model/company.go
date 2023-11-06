@@ -5,7 +5,6 @@ import "gorm.io/gorm"
 type Company struct {
 	gorm.Model
 
-	CompanyID      uint   `gorm:"column:company_id"`
 	Document       string `gorm:"column:document"`
 	Wallet         string `gorm:"column:wallet"`
 	Agency         int    `gorm:"column:agency"`
