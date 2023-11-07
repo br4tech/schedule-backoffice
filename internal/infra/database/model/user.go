@@ -1,6 +1,9 @@
 package model
 
-import "gorm.io/gorm"
+import (
+	"github.com/br4tech/schedule-backoffice/internal/domain/entity"
+	"gorm.io/gorm"
+)
 
 type User struct {
 	gorm.Model
@@ -19,4 +22,19 @@ type User struct {
 	ProfileID    uint         `gorm:"column:profile_id"`
 	Profiles     Profile      `gorm:"foreignKey:ProfileID"`
 	Permission   []Permission `gorm:"many2many:user_permissions;"`
+}
+
+func ConvertUserToDomain(userModel User) *entity.User {
+	return &entity.User{
+		ID:    userModel.RoleID,
+		Name:  userModel.Name,
+		Email: userModel.Email,
+	}
+}
+
+func ConvertUserToModel(userDomain *entity.User) User {
+	return User{
+		Name:  userDomain.Name,
+		Email: userDomain.Email,
+	}
 }

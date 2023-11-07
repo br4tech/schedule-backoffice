@@ -3,24 +3,37 @@ package repository
 import (
 	"github.com/br4tech/schedule-backoffice/internal/domain/entity"
 	"github.com/br4tech/schedule-backoffice/internal/infra/database"
+	"github.com/br4tech/schedule-backoffice/internal/infra/database/model"
 	repository "github.com/br4tech/schedule-backoffice/internal/infra/repository/interfaces"
 )
 
 type UserRepository struct {
-	adapter *database.GormAdapter
+	adapter database.IGormAdapter
 }
 
-func NewUserRepository(adapter *database.GormAdapter) repository.IUserRepository {
+func NewUserRepository(adapter database.IGormAdapter) repository.IUserRepository {
 	return &UserRepository{adapter: adapter}
 }
 
-func(r *UserRepository) Create(user *entity.User) error {
-	return r.db.Create(user).Error
+func (r *UserRepository) Create(user *entity.User) error {
+	userModel := model.ConvertUserToModel(user)
+	return r.adapter.Create(userModel).Error
 }
 
-func(r *UserRepository) FindByID(id int)(*entity.User, error){
+func (r *UserRepository) FindAll() (*entity.User, error) {
+
+	var userModel model.User
+	if err := r.adapter.FindAll(userModel).Error; err != nil {
+		return nil, err
+	}
+	userDomain := model.ConvertUserToDomain(userModel)
+	return userDomain, nil
+}
+
+func (r *UserRepository) FindByID(id int) (*entity.User, error) {
 	user := &entity.User{}
-	if err := r.db.Where("id=?",id).First(user).Error; err != nil {
+	var userModel model.User
+	if err := r.adapter.FindByID(userModel, id).Error; err != nil {
 		return nil, err
 	}
 	return user, nil
