@@ -15,9 +15,7 @@ func main() {
 	}
 
 	adapter := database.NewGormAdapter(db)
-	db = adapter.GetDB()
-
-	db.AutoMigrate(
+	adapter.AutoMigrate(
 		&model.Company{},
 		&model.Profile{},
 		&model.Permission{},
