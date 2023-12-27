@@ -1,4 +1,4 @@
-package repository
+package interfaces
 
 import "github.com/br4tech/schedule-backoffice/internal/domain/entity"
 

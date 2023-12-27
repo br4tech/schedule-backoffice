@@ -1,22 +1,22 @@
-package services
+package service
 
 import (
 	"errors"
 	"testing"
 
-	"github.com/br4tech/schedule-backoffice/internal/domain/entities"
+	"github.com/br4tech/schedule-backoffice/internal/domain/entity"
 )
 
 type MockUserRepository struct{}
 
-func(m *MockUserRepository) GetUserByID(id int)(*entities.User, error){
-	if id  == 1 {
-		return &entities.User{ID: 1, Name: "Joao"}, nil 
+func (m *MockUserRepository) GetUserByID(id int) (*entity.User, error) {
+	if id == 1 {
+		return &entity.User{ID: 1, Name: "Joao"}, nil
 	}
 	return nil, errors.New("Usuario nao encontrado")
 }
 
-func TestUserService_GetUserByID(t *testing.T){
+func TestUserService_GetUserByID(t *testing.T) {
 	userService := NewUserService(&MockUserRepository{})
 
 	user, err := userService.GetUserByID(1)

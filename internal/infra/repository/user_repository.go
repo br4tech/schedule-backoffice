@@ -4,14 +4,14 @@ import (
 	"github.com/br4tech/schedule-backoffice/internal/domain/entity"
 	"github.com/br4tech/schedule-backoffice/internal/infra/database"
 	"github.com/br4tech/schedule-backoffice/internal/infra/database/model"
-	repository "github.com/br4tech/schedule-backoffice/internal/infra/repository/interfaces"
+	interfaces "github.com/br4tech/schedule-backoffice/internal/infra/repository/interface"
 )
 
 type UserRepository struct {
 	adapter database.IGormAdapter
 }
 
-func NewUserRepository(adapter database.IGormAdapter) repository.IUserRepository {
+func NewUserRepository(adapter database.IGormAdapter) interfaces.IUserRepository {
 	return &UserRepository{adapter: adapter}
 }
 
